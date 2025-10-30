@@ -5,20 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jhezel & Edgardo Wedding 💍</title>
 
-<!-- 🌸 Wedding Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Allura&family=Playfair+Display:wght@400;500&family=Special+Elite&display=swap" rel="stylesheet">
 
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: "Playfair Display", serif;
     scroll-behavior: smooth;
     overflow-x: hidden;
     background: #000;
   }
-
-  /* ✨ Fade animation for elegant transition */
   section {
     width: 100%;
     display: block;
@@ -26,20 +22,16 @@
     opacity: 0;
     animation: fadeIn 1.2s ease-in forwards;
   }
-
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
-  /* 🎥 Video Hero Section */
   .video-section {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
   }
-
   .video-section video {
     position: absolute;
     top: 50%;
@@ -50,8 +42,6 @@
     object-fit: cover;
     animation: fadeIn 2s ease-in forwards;
   }
-
-  /* 🔊 Sound Toggle Button */
   #soundToggle {
     position: absolute;
     bottom: 30px;
@@ -69,16 +59,12 @@
     transition: 0.3s;
   }
   #soundToggle:hover { background: rgba(255,255,255,0.4); }
-
-  /* 🖼️ Images */
   section img {
     width: 100%;
     height: auto;
     display: block;
     animation: fadeIn 1.2s ease-in forwards;
   }
-
-  /* 💌 Guestbook Section */
   .guestbook {
     min-height: 100vh;
     background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/-/3e71743092558c0236f2d96ed935e32e4f66ae8f/Background.png') 
@@ -91,7 +77,6 @@
     justify-content: flex-start;
     padding: 100px 25px 80px;
   }
-
   .guestbook h1 {
     font-family: "Allura", cursive;
     font-size: 3em;
@@ -99,7 +84,6 @@
     margin-bottom: 25px;
     animation: fadeIn 1.5s ease-in forwards;
   }
-
   .guestbook p {
     font-family: "Special Elite", serif;
     font-size: 1.05em;
@@ -110,8 +94,6 @@
     color: #3e2f3e;
     animation: fadeIn 2s ease-in forwards;
   }
-
-  /* 💞 QR + Button */
   .guest-actions {
     display: flex;
     flex-direction: column;
@@ -121,14 +103,12 @@
     margin: 35px auto 25px;
     animation: fadeIn 2s ease-in forwards;
   }
-
   .guest-actions img {
     width: 250px;
     height: 250px;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   }
-
   .guest-actions a {
     display: inline-block;
     background: #b5a0c5;
@@ -142,10 +122,7 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     transition: 0.3s;
   }
-
   .guest-actions a:hover { background: #a98fc0; }
-
-  /* 📱 Mobile Adjustments */
   @media (max-width: 768px) {
     .guestbook {
       padding: 70px 25px 60px;
@@ -166,7 +143,6 @@
     .guest-actions img { width: 200px; height: 200px; }
     .guest-actions a { width: 85%; font-size: 1em; padding: 12px 20px; }
   }
-
   @media (max-width: 480px) {
     .guestbook h1 { font-size: 2em; }
     .guestbook p { font-size: 0.95em; line-height: 1.6; }
@@ -175,8 +151,6 @@
 </head>
 
 <body>
-
-<!-- 🎥 Video Hero Section -->
 <section class="video-section">
   <video id="weddingVideo" autoplay loop playsinline muted>
     <source src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/202510300259%20(1).mp4" type="video/mp4">
@@ -185,8 +159,7 @@
   <button id="soundToggle">🔇</button>
 </section>
 
-<!-- 🖼️ Wedding Pages -->
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/1.jpg" alt="Page 1"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/refs/heads/main/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/1.jpg" alt="Page 1"></section>
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/2.jpg" alt="Page 2"></section>
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/3.jpg" alt="Page 3"></section>
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/4.jpg" alt="Page 4"></section>
@@ -195,23 +168,15 @@
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/7.jpg" alt="Page 7"></section>
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/8.jpg" alt="Page 8"></section>
 
-<!-- 💌 Guestbook Section -->
 <section class="guestbook" id="guestbook">
   <h1>Ibahagi ang Iyong Alaala 💞</h1>
-  <p>
-    Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisang dibdib.  
-    Ang bawat larawan at mensahe ay magiging bahagi ng aming kwento — mga sandaling habambuhay naming iingatan. 💐
-  </p>
-  <p>
-    I-scan ang QR code o i-click ang button sa ibaba upang mag-upload ng iyong larawan at mensahe para sa amin.  
-    Ang iyong pagbati ay magiging espesyal na bahagi ng aming alaala.
-  </p>
+  <p>Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisang dibdib. Ang bawat larawan at mensahe ay magiging bahagi ng aming kwento — mga sandaling habambuhay naming iingatan. 💐</p>
+  <p>I-scan ang QR code o i-click ang button sa ibaba upang mag-upload ng iyong larawan at mensahe para sa amin. Ang iyong pagbati ay magiging espesyal na bahagi ng aming alaala.</p>
 
   <div class="guest-actions">
     <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw%2Fviewform"
          alt="QR Code para sa Wedding Form">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw/viewform" 
-       target="_blank">💌 I-open ang Form</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw/viewform" target="_blank">💌 I-click</a>
   </div>
 
   <p style="margin-top:30px;font-style:italic;color:#7b5f8e;">
@@ -221,17 +186,14 @@
   </p>
 </section>
 
-<!-- 🎬 Script -->
 <script>
   const video = document.getElementById('weddingVideo');
   const btn = document.getElementById('soundToggle');
   let soundOn = false;
-
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   video.muted = isMobile;
   video.play();
   btn.textContent = isMobile ? '🔇' : '🔊';
-
   btn.addEventListener('click', () => {
     soundOn = !soundOn;
     video.muted = !soundOn;
