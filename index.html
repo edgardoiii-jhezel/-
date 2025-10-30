@@ -39,15 +39,15 @@
     overflow: hidden;
   }
 
-  .video-section video {
+  .video-section iframe {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100vw;
     height: 100vh;
     transform: translate(-50%, -50%);
+    border: none;
     object-fit: cover;
-    animation: fadeIn 2s ease-in forwards;
   }
 
   /* 🔊 Sound Toggle Button */
@@ -183,10 +183,12 @@
 
 <!-- 🎥 Fullscreen Video Hero Section -->
 <section class="video-section">
-  <video id="weddingVideo" autoplay loop playsinline muted>
-    <source src="https://www.dropbox.com/scl/fi/9nyis8mrg3vnk2ucuezon/202510300259.mp4?raw=1" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <iframe
+    id="weddingVideoFrame"
+    src="https://player.cloudinary.com/embed/?cloud_name=dogk6wbxu&public_id=202510300259_1_ejj7t0&profile=cld-default&autoplay=true&loop=true&muted=true"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
   <button id="soundToggle">🔇</button>
 </section>
 
@@ -226,20 +228,16 @@
   </p>
 </section>
 
-<!-- 🎬 Sound Control Script -->
+<!-- 🎬 Sound Toggle Script -->
 <script>
-  const video = document.getElementById('weddingVideo');
+  const iframe = document.getElementById('weddingVideoFrame');
   const btn = document.getElementById('soundToggle');
   let soundOn = false;
 
-  video.muted = true;
-  video.play().catch(() => {});
-
   btn.addEventListener('click', () => {
     soundOn = !soundOn;
-    video.muted = !soundOn;
+    iframe.contentWindow.postMessage({ event: 'mute', data: { muted: !soundOn } }, '*');
     btn.textContent = soundOn ? '🔊' : '🔇';
-    video.play();
   });
 </script>
 
