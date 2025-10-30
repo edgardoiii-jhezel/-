@@ -18,7 +18,6 @@
     background: #000;
   }
 
-  /* ✨ Fade animation for elegant transition */
   section {
     width: 100%;
     display: block;
@@ -32,7 +31,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* 🎥 Video Hero Section */
   .video-section {
     position: relative;
     width: 100%;
@@ -51,7 +49,6 @@
     animation: fadeIn 2s ease-in forwards;
   }
 
-  /* 🔊 Sound Toggle Button */
   #soundToggle {
     position: absolute;
     bottom: 30px;
@@ -70,7 +67,6 @@
   }
   #soundToggle:hover { background: rgba(255,255,255,0.4); }
 
-  /* 🖼️ Images */
   section img {
     width: 100%;
     height: auto;
@@ -78,7 +74,6 @@
     animation: fadeIn 1.2s ease-in forwards;
   }
 
-  /* 💌 Guestbook Section */
   .guestbook {
     min-height: 100vh;
     background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/-/3e71743092558c0236f2d96ed935e32e4f66ae8f/Background.png') 
@@ -111,7 +106,6 @@
     animation: fadeIn 2s ease-in forwards;
   }
 
-  /* 💞 QR + Button */
   .guest-actions {
     display: flex;
     flex-direction: column;
@@ -145,7 +139,6 @@
 
   .guest-actions a:hover { background: #a98fc0; }
 
-  /* 📱 Mobile Adjustments */
   @media (max-width: 768px) {
     .guestbook {
       padding: 70px 25px 60px;
@@ -179,7 +172,7 @@
 <!-- 🎥 Video Hero Section -->
 <section class="video-section">
   <video id="weddingVideo" autoplay loop playsinline muted>
-    <source src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/202510300259%20(1).mp4" type="video/mp4">
+    <source src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/202510300259(1).mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <button id="soundToggle">🔇</button>
@@ -221,7 +214,6 @@
   </p>
 </section>
 
-<!-- 🎬 Script -->
 <script>
   const video = document.getElementById('weddingVideo');
   const btn = document.getElementById('soundToggle');
