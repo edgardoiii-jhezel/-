@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tl">
 <head>
@@ -19,13 +18,14 @@
     background: #000;
   }
 
-  /* ✅ Soft fade between sections */
+  /* ✨ Fade animation for cinematic transitions */
   section {
     width: 100%;
     display: block;
     line-height: 0;
     opacity: 0;
-    animation: fadeIn 1s ease-in forwards;
+    animation: fadeIn 1.2s ease-in forwards;
+    transition: opacity 1s ease-in-out;
   }
 
   @keyframes fadeIn {
@@ -52,6 +52,13 @@
     z-index: 1;
     transform: translate(-50%, -50%);
     object-fit: cover;
+    opacity: 0;
+    animation: fadeInVideo 2s ease-in forwards;
+  }
+
+  @keyframes fadeInVideo {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   /* 🎵 Sound toggle button */
@@ -76,56 +83,24 @@
     background: rgba(255,255,255,0.4);
   }
 
-  .overlay-text {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: white;
-    font-family: "Allura", cursive;
-    font-size: 3.5em;
-    top: 45%;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-    animation: fadeIn 2s ease-in forwards;
-  }
-
-  /* ✅ Other photo pages */
+  /* ✨ Smooth fade for each image section */
   section img {
     width: 100%;
     height: auto;
     display: block;
+    opacity: 0;
+    animation: fadeInPhoto 1.2s ease-in forwards;
   }
 
-  /* ✅ Navigation dots */
-  .nav-dots {
-    position: fixed;
-    top: 50%;
-    right: 25px;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 1000;
+  @keyframes fadeInPhoto {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
-  .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(255,255,255,0.5);
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  .dot.active, .dot:hover {
-    background-color: #fff;
-    transform: scale(1.2);
-  }
-
-  /* ✅ Guestbook Section with exact background (no gradient overlay) */
+  /* ✅ Guestbook Section (with embedded form) */
   .guestbook {
     min-height: 100vh;
-    background: url('https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Background.png')
-      center/cover no-repeat;
+    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/8.jpg') center/cover no-repeat;
     background-attachment: fixed;
     color: #3e2f3e;
     text-align: center;
@@ -134,6 +109,8 @@
     align-items: center;
     justify-content: flex-start;
     padding: 100px 25px 80px;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-in forwards;
   }
 
   .guestbook h1 {
@@ -141,14 +118,6 @@
     font-size: 3em;
     color: #8a6b9a;
     margin-bottom: 25px;
-  }
-
-  .guestbook h2 {
-    font-family: "Allura", cursive;
-    font-size: 2.2em;
-    color: #9b7fb0;
-    margin-top: 35px;
-    margin-bottom: 10px;
   }
 
   .guestbook p {
@@ -160,48 +129,23 @@
     color: #4b3b4d;
   }
 
-  /* ✅ QR + Button */
-  .guest-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin: 35px auto 25px;
+  /* ✅ Embedded Form Container */
+  .form-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 20px auto;
   }
 
-  .guest-actions img {
-    width: 250px;
-    height: 250px;
+  iframe {
+    width: 100%;
+    height: 650px;
+    border: none;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  }
-
-  .guest-actions a {
-    display: inline-block;
-    background: #b5a0c5;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 10px;
-    padding: 14px 28px;
-    font-size: 1.1em;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: 0.3s;
-  }
-
-  .guest-actions a:hover {
-    background: #a98fc0;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
   }
 
   /* ✅ Mobile Fixes */
   @media (max-width: 768px) {
-    .overlay-text {
-      font-size: 2em;
-      top: 40%;
-      padding: 0 15px;
-      line-height: 1.3;
-    }
-
     .guestbook {
       padding: 70px 25px 60px;
       background-attachment: scroll;
@@ -213,12 +157,6 @@
       color: #7b5f8e;
     }
 
-    .guestbook h2 {
-      font-size: 1.7em;
-      margin-top: 25px;
-      margin-bottom: 10px;
-    }
-
     .guestbook p {
       font-size: 1em;
       max-width: 90%;
@@ -227,21 +165,13 @@
       color: #3d2f3f;
     }
 
-    .guest-actions img {
-      width: 200px;
-      height: 200px;
-    }
-
-    .guest-actions a {
-      width: 85%;
-      font-size: 1em;
-      padding: 12px 20px;
+    iframe {
+      height: 600px;
     }
   }
 
   @media (max-width: 480px) {
     .guestbook h1 { font-size: 2em; }
-    .guestbook h2 { font-size: 1.5em; }
     .guestbook p { font-size: 0.95em; line-height: 1.6; }
   }
 </style>
@@ -251,67 +181,57 @@
 
 <!-- 🎥 Video Hero Section with Sound Toggle -->
 <section class="video-section">
-  <video id="weddingVideo" autoplay muted loop playsinline>
-    <source src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/202510300259%20(1).mp4" type="video/mp4">
+  <video id="weddingVideo" autoplay loop playsinline>
+    <source src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/202510300259%20(1).mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <button id="soundToggle">🔇</button>
 </section>
 
 <!-- 🖼️ Connected Image Sections -->
-<section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215615.png" alt="Page 1"></section>
-<section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215655.png" alt="Page 2"></section>
-<section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215732.png" alt="Page 3"></section>
-<section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215806.png" alt="Page 4"></section>
-<section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215834.png" alt="Page 5"></section>
-<section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215853.png" alt="Page 6"></section>
-<section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215939.png" alt="Page 7"></section>
-<section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20220004.png" alt="Page 8"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/1.jpg" alt="Page 1"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/2.jpg" alt="Page 2"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/3.jpg" alt="Page 3"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/4.jpg" alt="Page 4"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/5.jpg" alt="Page 5"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/6.jpg" alt="Page 6"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/7.jpg" alt="Page 7"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/8.jpg" alt="Page 8"></section>
 
 <!-- 💌 Guestbook Section -->
 <section class="guestbook" id="guestbook">
-  <h1>Ibahagi ang Iyong Alaala</h1>
+  <h1>Ibahagi ang Iyong Alaala 💞</h1>
   <p>
     Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisang dibdib.  
     Ang bawat larawan at mensahe ay magiging bahagi ng aming kwento — mga sandaling habambuhay naming iingatan. 💐
   </p>
-  <p>
-    I-scan ang QR code o i-click ang button sa ibaba upang mag-upload ng iyong larawan at mensahe para sa amin.  
-    Ang iyong pagbati ay magiging espesyal na bahagi ng aming alaala.
-  </p>
 
-  <div class="guest-actions">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLScg18cx65BOiutYEidibh0i7cxK_Rzj7nHAaTtgZJnmr-Xg3w%2Fviewform"
-         alt="QR Code para sa Wedding Form">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScg18cx65BOiutYEidibh0i7cxK_Rzj7nHAaTtgZJnmr-Xg3w/viewform" 
-       target="_blank">I-open ang Form</a>
+  <div class="form-container">
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw/viewform?embedded=true"
+      allowfullscreen>
+      Loading…
+    </iframe>
   </div>
 
   <p style="margin-top:30px;font-style:italic;color:#7b5f8e;">
-   Maraming salamat sa pagbabahagi ng iyong mga alaala!  
+    💞 Maraming salamat sa pagbabahagi ng iyong mga alaala!  
     <br>Ang iyong mensahe ay magpapasaya sa aming puso sa tuwing aming babalikan ito.  
-    <br><br>— Pagmamahal,<br><strong>Jhezel at Edgardo III</strong>
+    <br><br>— Pagmamahal,<br><strong>Jhezel at Edgardo III 💍</strong>
   </p>
 </section>
 
 <!-- 🎬 Script -->
 <script>
-  const dots = document.querySelectorAll('.dot');
-  const sections = document.querySelectorAll('section');
-  function scrollToSection(i) {
-    sections[i].scrollIntoView({ behavior: 'smooth' });
-  }
-  window.addEventListener('scroll', () => {
-    let index = sections.length;
-    while (--index && window.scrollY + 200 < sections[index].offsetTop) {}
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[index].classList.add('active');
-  });
-
-  // 🎵 Sound toggle script
   const video = document.getElementById('weddingVideo');
   const btn = document.getElementById('soundToggle');
   let soundOn = false;
+
+  // Autoplay rules: desktop with sound, mobile muted
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  video.muted = isMobile;
+  video.play();
+  btn.textContent = isMobile ? '🔇' : '🔊';
 
   btn.addEventListener('click', () => {
     soundOn = !soundOn;
@@ -328,4 +248,3 @@
 
 </body>
 </html>
-
