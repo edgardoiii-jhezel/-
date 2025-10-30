@@ -181,14 +181,24 @@
 
 <body>
 
-<!-- 🎥 Fullscreen Video Hero Section -->
-<section class="video-section">
-  <video id="weddingVideo" autoplay loop playsinline muted>
-    <source src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/f377438d7d48512192802f372594fbfe2358370c/202510300259(1).mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <button id="soundToggle">🔇</button>
+<!-- 🎥 Fullscreen Autoplay Video Hero Section -->
+<section class="video-section" style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+  <iframe
+    src="https://drive.google.com/file/d/1pN0mXNHFfoCrJqbq_RDjMMfQMcgtMmdU/preview?autoplay=1&loop=1&mute=1"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      object-fit: cover;
+    ">
+  </iframe>
 </section>
+
 
 <!-- 🖼️ Wedding Pages -->
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/1.jpg" alt="Page 1"></section>
@@ -246,3 +256,4 @@
 
 </body>
 </html>
+
