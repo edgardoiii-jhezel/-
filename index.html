@@ -31,6 +31,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  /* 🎥 Video Section */
   .video-section {
     position: relative;
     width: 100%;
@@ -42,30 +43,34 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 100%;
-    min-height: 100%;
+    width: 100vw;
+    height: 100vh;
     transform: translate(-50%, -50%);
     object-fit: cover;
     animation: fadeIn 2s ease-in forwards;
   }
 
+  /* 🔊 Sound Toggle Button */
   #soundToggle {
     position: absolute;
     bottom: 30px;
     right: 30px;
-    z-index: 5;
-    background: rgba(255,255,255,0.2);
+    z-index: 10;
+    background: rgba(255,255,255,0.25);
     color: white;
-    font-size: 24px;
+    font-size: 26px;
     border: none;
     border-radius: 50%;
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
     cursor: pointer;
     backdrop-filter: blur(6px);
-    transition: 0.3s;
+    transition: 0.3s ease;
   }
-  #soundToggle:hover { background: rgba(255,255,255,0.4); }
+
+  #soundToggle:hover {
+    background: rgba(255,255,255,0.45);
+  }
 
   section img {
     width: 100%;
@@ -158,6 +163,13 @@
     }
     .guest-actions img { width: 200px; height: 200px; }
     .guest-actions a { width: 85%; font-size: 1em; padding: 12px 20px; }
+    #soundToggle {
+      width: 50px;
+      height: 50px;
+      bottom: 20px;
+      right: 20px;
+      font-size: 22px;
+    }
   }
 
   @media (max-width: 480px) {
@@ -170,28 +182,13 @@
 <body>
 
 <!-- 🎥 Fullscreen Video Hero Section -->
-<section class="video-section" style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
-  <video
-    id="weddingVideo"
-    autoplay
-    loop
-    playsinline
-    muted
-    style="
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      transform: translate(-50%, -50%);
-    ">
+<section class="video-section">
+  <video id="weddingVideo" autoplay loop playsinline muted>
     <source src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/f377438d7d48512192802f372594fbfe2358370c/202510300259(1).mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
+  <button id="soundToggle">🔇</button>
 </section>
-
-
 
 <!-- 🖼️ Wedding Pages -->
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/1.jpg" alt="Page 1"></section>
@@ -229,15 +226,15 @@
   </p>
 </section>
 
+<!-- 🎬 Sound Control Script -->
 <script>
   const video = document.getElementById('weddingVideo');
   const btn = document.getElementById('soundToggle');
   let soundOn = false;
 
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  video.muted = isMobile;
-  video.play();
-  btn.textContent = isMobile ? '🔇' : '🔊';
+  // ensure video starts muted but plays immediately
+  video.muted = true;
+  video.play().catch(() => {});
 
   btn.addEventListener('click', () => {
     soundOn = !soundOn;
@@ -249,10 +246,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
