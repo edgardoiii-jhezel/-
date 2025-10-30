@@ -18,22 +18,21 @@
     background: #000;
   }
 
-  /* ✨ Fade animation for cinematic transitions */
+  /* ✨ Fade animation for elegant transition */
   section {
     width: 100%;
     display: block;
     line-height: 0;
     opacity: 0;
     animation: fadeIn 1.2s ease-in forwards;
-    transition: opacity 1s ease-in-out;
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ✅ Fullscreen video section */
+  /* 🎥 Video Hero Section */
   .video-section {
     position: relative;
     width: 100%;
@@ -47,21 +46,12 @@
     left: 50%;
     min-width: 100%;
     min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: 1;
     transform: translate(-50%, -50%);
     object-fit: cover;
-    opacity: 0;
-    animation: fadeInVideo 2s ease-in forwards;
+    animation: fadeIn 2s ease-in forwards;
   }
 
-  @keyframes fadeInVideo {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  /* 🎵 Sound toggle button */
+  /* 🔊 Sound Toggle Button */
   #soundToggle {
     position: absolute;
     bottom: 30px;
@@ -78,30 +68,21 @@
     backdrop-filter: blur(6px);
     transition: 0.3s;
   }
+  #soundToggle:hover { background: rgba(255,255,255,0.4); }
 
-  #soundToggle:hover {
-    background: rgba(255,255,255,0.4);
-  }
-
-  /* ✨ Smooth fade for each image section */
+  /* 🖼️ Images */
   section img {
     width: 100%;
     height: auto;
     display: block;
-    opacity: 0;
-    animation: fadeInPhoto 1.2s ease-in forwards;
+    animation: fadeIn 1.2s ease-in forwards;
   }
 
-  @keyframes fadeInPhoto {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  /* ✅ Guestbook Section (with embedded form) */
+  /* 💌 Guestbook Section */
   .guestbook {
     min-height: 100vh;
-    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/8.jpg') center/cover no-repeat;
-    background-attachment: fixed;
+    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/-/3e71743092558c0236f2d96ed935e32e4f66ae8f/Background.png') 
+      center/cover no-repeat fixed;
     color: #3e2f3e;
     text-align: center;
     display: flex;
@@ -109,8 +90,6 @@
     align-items: center;
     justify-content: flex-start;
     padding: 100px 25px 80px;
-    opacity: 0;
-    animation: fadeIn 1.2s ease-in forwards;
   }
 
   .guestbook h1 {
@@ -118,6 +97,7 @@
     font-size: 3em;
     color: #8a6b9a;
     margin-bottom: 25px;
+    animation: fadeIn 1.5s ease-in forwards;
   }
 
   .guestbook p {
@@ -127,13 +107,47 @@
     max-width: 720px;
     line-height: 1.9;
     color: #4b3b4d;
+    animation: fadeIn 2s ease-in forwards;
   }
 
-  /* ✅ Embedded Form Container */
+  /* 💞 QR + Button */
+  .guest-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 35px auto 25px;
+    animation: fadeIn 2s ease-in forwards;
+  }
+
+  .guest-actions img {
+    width: 250px;
+    height: 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+
+  .guest-actions a {
+    display: inline-block;
+    background: #b5a0c5;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 14px 28px;
+    font-size: 1.1em;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: 0.3s;
+  }
+
+  .guest-actions a:hover { background: #a98fc0; }
+
+  /* 📝 Embedded Form */
   .form-container {
     width: 100%;
     max-width: 700px;
     margin: 20px auto;
+    animation: fadeIn 2.5s ease-in forwards;
   }
 
   iframe {
@@ -144,19 +158,17 @@
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
   }
 
-  /* ✅ Mobile Fixes */
+  /* 📱 Mobile Adjustments */
   @media (max-width: 768px) {
     .guestbook {
       padding: 70px 25px 60px;
       background-attachment: scroll;
     }
-
     .guestbook h1 {
       font-size: 2.3em;
       margin-bottom: 18px;
       color: #7b5f8e;
     }
-
     .guestbook p {
       font-size: 1em;
       max-width: 90%;
@@ -164,10 +176,9 @@
       margin-bottom: 20px;
       color: #3d2f3f;
     }
-
-    iframe {
-      height: 600px;
-    }
+    .guest-actions img { width: 200px; height: 200px; }
+    .guest-actions a { width: 85%; font-size: 1em; padding: 12px 20px; }
+    iframe { height: 600px; }
   }
 
   @media (max-width: 480px) {
@@ -179,16 +190,16 @@
 
 <body>
 
-<!-- 🎥 Video Hero Section with Sound Toggle -->
+<!-- 🎥 Video Hero Section -->
 <section class="video-section">
-  <video id="weddingVideo" autoplay loop playsinline>
+  <video id="weddingVideo" autoplay loop playsinline muted>
     <source src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/202510300259%20(1).mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <button id="soundToggle">🔇</button>
 </section>
 
-<!-- 🖼️ Connected Image Sections -->
+<!-- 🖼️ Wedding Pages -->
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/1.jpg" alt="Page 1"></section>
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/2.jpg" alt="Page 2"></section>
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/-/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/3.jpg" alt="Page 3"></section>
@@ -205,6 +216,17 @@
     Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisang dibdib.  
     Ang bawat larawan at mensahe ay magiging bahagi ng aming kwento — mga sandaling habambuhay naming iingatan. 💐
   </p>
+  <p>
+    I-scan ang QR code o i-click ang button sa ibaba upang mag-upload ng iyong larawan at mensahe para sa amin.  
+    Ang iyong pagbati ay magiging espesyal na bahagi ng aming alaala.
+  </p>
+
+  <div class="guest-actions">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw%2Fviewform"
+         alt="QR Code para sa Wedding Form">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw/viewform" 
+       target="_blank">💌 I-open ang Form</a>
+  </div>
 
   <div class="form-container">
     <iframe
@@ -227,7 +249,6 @@
   const btn = document.getElementById('soundToggle');
   let soundOn = false;
 
-  // Autoplay rules: desktop with sound, mobile muted
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   video.muted = isMobile;
   video.play();
@@ -235,14 +256,9 @@
 
   btn.addEventListener('click', () => {
     soundOn = !soundOn;
-    if (soundOn) {
-      video.muted = false;
-      video.play();
-      btn.textContent = '🔊';
-    } else {
-      video.muted = true;
-      btn.textContent = '🔇';
-    }
+    video.muted = !soundOn;
+    btn.textContent = soundOn ? '🔊' : '🔇';
+    video.play();
   });
 </script>
 
