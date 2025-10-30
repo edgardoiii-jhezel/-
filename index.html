@@ -171,23 +171,26 @@
 
 <!-- 🎥 Fullscreen Video Hero Section -->
 <section class="video-section" style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
-  <iframe
-    src="https://drive.google.com/file/d/1pN0mXNHFfoCrJqbq_RDjMMfQMcgtMmdU/preview?autoplay=1&mute=1&loop=1"
-    allow="autoplay; encrypted-media"
-    allowfullscreen
+  <video
+    id="weddingVideo"
+    autoplay
+    loop
+    playsinline
+    muted
     style="
       position: absolute;
       top: 50%;
       left: 50%;
       width: 100vw;
       height: 100vh;
-      transform: translate(-50%, -50%);
-      border: none;
       object-fit: cover;
-      aspect-ratio: 16/9;
+      transform: translate(-50%, -50%);
     ">
-  </iframe>
+    <source src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/f377438d7d48512192802f372594fbfe2358370c/202510300259(1).mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </section>
+
 
 
 <!-- 🖼️ Wedding Pages -->
@@ -246,6 +249,7 @@
 
 </body>
 </html>
+
 
 
 
