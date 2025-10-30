@@ -181,24 +181,14 @@
 
 <body>
 
-<!-- 🎥 Fullscreen Autoplay Video Hero Section -->
-<section class="video-section" style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
-  <iframe
-    src="https://drive.google.com/file/d/1pN0mXNHFfoCrJqbq_RDjMMfQMcgtMmdU/preview?autoplay=1&loop=1&mute=1"
-    allow="autoplay; encrypted-media"
-    allowfullscreen
-    style="
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-      object-fit: cover;
-    ">
-  </iframe>
+<!-- 🎥 Fullscreen Video Hero Section -->
+<section class="video-section">
+  <video id="weddingVideo" autoplay loop playsinline muted>
+    <source src="https://www.dropbox.com/scl/fi/9nyis8mrg3vnk2ucuezon/202510300259.mp4?raw=1" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <button id="soundToggle">🔇</button>
 </section>
-
 
 <!-- 🖼️ Wedding Pages -->
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/93d6c4e12581f1ebc607ac8d8ba19959e7e0ccf6/1.jpg" alt="Page 1"></section>
@@ -242,7 +232,6 @@
   const btn = document.getElementById('soundToggle');
   let soundOn = false;
 
-  // ensure video starts muted but plays immediately
   video.muted = true;
   video.play().catch(() => {});
 
@@ -256,4 +245,3 @@
 
 </body>
 </html>
-
