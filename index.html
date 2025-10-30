@@ -56,6 +56,38 @@
     background-color: black;
   }
 
+  /* 🔊 Mute/Unmute Button */
+  #soundToggle {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    font-size: 26px;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: 0.3s ease;
+  }
+
+  #soundToggle:hover {
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  @media (max-width: 768px) {
+    #soundToggle {
+      width: 50px;
+      height: 50px;
+      bottom: 20px;
+      right: 20px;
+      font-size: 22px;
+    }
+  }
+
   /* 🖼️ Images */
   section img {
     width: 100%;
@@ -167,6 +199,7 @@
     <source src="https://res.cloudinary.com/dogk6wbxu/video/upload/202510300259_1_ejj7t0.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
+  <button id="soundToggle">🔊</button>
 </section>
 
 <!-- 🖼️ Wedding Pages -->
@@ -207,26 +240,38 @@
 
 <!-- 🎬 Video Script -->
 <script>
-  // ✅ Adjust full height for mobile browsers
+  // ✅ Adjust for mobile viewport height
   function setVH() {
     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
   }
   setVH();
   window.addEventListener('resize', setVH);
 
-  // ✅ Attempt autoplay with sound
+  // ✅ Sound toggle control
   const video = document.getElementById('weddingVideo');
+  const btn = document.getElementById('soundToggle');
+  let soundOn = true;
+
   video.volume = 1.0;
   video.muted = false;
 
+  // Autoplay attempt with sound, fallback to muted
   const playPromise = video.play();
   if (playPromise !== undefined) {
     playPromise.catch(() => {
-      // If blocked, fallback to muted autoplay
       video.muted = true;
       video.play();
+      btn.textContent = '🔇';
+      soundOn = false;
     });
   }
+
+  btn.addEventListener('click', () => {
+    soundOn = !soundOn;
+    video.muted = !soundOn;
+    btn.textContent = soundOn ? '🔊' : '🔇';
+    video.play();
+  });
 </script>
 
 </body>
