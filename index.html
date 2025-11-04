@@ -19,7 +19,7 @@
     line-height: 0;
   }
 
-  /* 🌿 Remove any visible page break lines */
+  /* 🌿 Remove any visible page break or bamboo seam lines */
   html, body, section, img {
     margin: 0;
     padding: 0;
@@ -39,10 +39,14 @@
     line-height: 0;
     image-rendering: auto;
     background-color: transparent;
+    clip-path: inset(0.2px 0 0.2px 0); /* ✨ Removes faint bamboo edge lines */
   }
 
-  /* 🪶 Fix faint horizontal seams */
-  img { transform: translateY(-0.2px); }
+  /* 💫 Seamless bamboo enhancement */
+  img {
+    transform: translateY(-0.2px);
+    filter: brightness(102%) contrast(102%);
+  }
 
   section {
     display: block;
