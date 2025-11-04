@@ -16,14 +16,39 @@
     scroll-behavior: smooth;
     overflow-x: hidden;
     background: #000;
+    line-height: 0;
+  }
+
+  /* 🌿 Remove any visible page break lines */
+  html, body, section, img {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+  }
+
+  section img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: none;
+    margin: 0;
+    padding: 0;
+    vertical-align: bottom;
+    line-height: 0;
   }
 
   section {
-    width: 100%;
     display: block;
-    line-height: 0;
+    width: 100%;
     opacity: 0;
-    animation: fadeIn 1.2s ease-in forwards;
+    transform: translateY(20px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+  }
+
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   @keyframes fadeIn {
@@ -88,18 +113,32 @@
     }
   }
 
-  /* 🖼️ Images */
-  section img {
-    width: 100%;
-    height: auto;
+  /* ✅ Clickable bamboo page halves */
+  .clickable-section {
+    position: relative;
+  }
+
+  .clickable-section a {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
     display: block;
-    animation: fadeIn 1.2s ease-in forwards;
+    z-index: 5;
+    transition: background-color 0.3s ease;
+  }
+
+  .clickable-section a.left { left: 0; }
+  .clickable-section a.right { left: 50%; }
+
+  .clickable-section a:hover {
+    background-color: rgba(255,255,255,0.05);
   }
 
   /* 💌 Guestbook Section */
   .guestbook {
     min-height: 100vh;
-    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/3e71743092558c0236f2d96ed935e32e4f66ae8f/Background.png') 
+    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/3e71743092558c0236f2d96ed935e32e4f66ae8f/Background.png')
       center/cover no-repeat fixed;
     color: #3e2f3e;
     text-align: center;
@@ -129,7 +168,6 @@
     animation: fadeIn 2s ease-in forwards;
   }
 
-  /* 💞 QR + Button */
   .guest-actions {
     display: flex;
     flex-direction: column;
@@ -193,7 +231,7 @@
 
 <body>
 
-<!-- 🎥 Fullscreen Video Hero Section -->
+<!-- 🎥 Video Hero -->
 <section class="video-section">
   <video id="weddingVideo" autoplay loop playsinline>
     <source src="https://res.cloudinary.com/dogk6wbxu/video/upload/202510300259_1_ejj7t0.mp4" type="video/mp4">
@@ -202,125 +240,33 @@
   <button id="soundToggle">🔊</button>
 </section>
 
-<!-- 🌿 Seamless Wedding Bamboo Pages with On-Scroll Fade-In -->
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #000;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-  }
+<!-- 🌿 Bamboo Wedding Pages -->
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/a7365aa79ae77ca376c0514db2af15141016c58a/1.jpg" alt="Page 1"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/a7365aa79ae77ca376c0514db2af15141016c58a/2.jpg" alt="Page 2"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/a7365aa79ae77ca376c0514db2af15141016c58a/3.jpg" alt="Page 3"></section>
 
-  section {
-    display: block;
-    line-height: 0;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1.2s ease, transform 1.2s ease;
-  }
-
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  section img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border: none;
-    margin: 0;
-    padding: 0;
-    vertical-align: middle;
-  }
-
-  /* ✅ Clickable bamboo page */
-  .clickable-section {
-    position: relative;
-  }
-
-  .clickable-section a {
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    display: block;
-    z-index: 5;
-    transition: background-color 0.3s ease;
-  }
-
-  /* optional subtle hover highlight */
-  .clickable-section a:hover {
-    background-color: rgba(255,255,255,0.05);
-  }
-
-  .clickable-section a.left { left: 0; }
-  .clickable-section a.right { left: 50%; }
-</style>
-
-<!-- 🖼️ Wedding Bamboo Pages -->
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/545bc896824173e66a2646f005f2162189908e25/1.jpg" alt="Page 1"></section>
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/545bc896824173e66a2646f005f2162189908e25/2.jpg" alt="Page 2"></section>
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/545bc896824173e66a2646f005f2162189908e25/3.jpg" alt="Page 3"></section>
-
-<!-- 🌸 Page 4 with clickable halves -->
 <section class="clickable-section">
-  <img 
-    src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/545bc896824173e66a2646f005f2162189908e25/4.jpg" 
-    alt="Page 4">
-  <a 
-    href="https://drive.google.com/drive/folders/1vK6N46yeG4C9GpxlXmbXlpPaNoxDAw8X?usp=drive_link"
-    target="_blank" 
-    class="left"></a>
-  <a 
-    href="https://drive.google.com/drive/folders/1-IOxkbQ9bXQ3wfk2MjyALoQxvoEq4vVo?usp=drive_link"
-    target="_blank" 
-    class="right"></a>
+  <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/a7365aa79ae77ca376c0514db2af15141016c58a/4.jpg" alt="Page 4">
+  <a href="https://drive.google.com/drive/folders/1vK6N46yeG4C9GpxlXmbXlpPaNoxDAw8X?usp=drive_link" target="_blank" class="left"></a>
+  <a href="https://drive.google.com/drive/folders/1-IOxkbQ9bXQ3wfk2MjyALoQxvoEq4vVo?usp=drive_link" target="_blank" class="right"></a>
 </section>
 
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/545bc896824173e66a2646f005f2162189908e25/5.jpg" alt="Page 5"></section>
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/545bc896824173e66a2646f005f2162189908e25/6.jpg" alt="Page 6"></section>
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/545bc896824173e66a2646f005f2162189908e25/7.jpg" alt="Page 7"></section>
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/545bc896824173e66a2646f005f2162189908e25/8.jpg" alt="Page 8"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/a7365aa79ae77ca376c0514db2af15141016c58a/5.jpg" alt="Page 5"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/a7365aa79ae77ca376c0514db2af15141016c58a/6.jpg" alt="Page 6"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/a7365aa79ae77ca376c0514db2af15141016c58a/7.jpg" alt="Page 7"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/a7365aa79ae77ca376c0514db2af15141016c58a/8.jpg" alt="Page 8"></section>
 
-<!-- 🎬 Scroll-triggered animation -->
-<script>
-  const sections = document.querySelectorAll("section");
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target); // Animate once only
-      }
-    });
-  }, { threshold: 0.1 });
-
-  sections.forEach(section => observer.observe(section));
-</script>
-
-
-<!-- 💌 Guestbook Section -->
+<!-- 💞 Guestbook -->
 <section class="guestbook" id="guestbook">
   <h1>Ibahagi ang Iyong Alaala 💞</h1>
-  <p>
-    Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisang dibdib.  
-    Ang bawat larawan at mensahe ay magiging bahagi ng aming kwento — mga sandaling habambuhay naming iingatan. 💐
-  </p>
-  <p>
-    I-scan ang QR code o i-click ang button sa ibaba upang mag-upload ng iyong larawan at mensahe para sa amin.  
-    Ang iyong pagbati ay magiging espesyal na bahagi ng aming alaala.
-  </p>
+  <p>Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisa.  
+  Ang bawat larawan at mensahe ay magiging bahagi ng aming kwento — mga sandaling habambuhay naming iingatan. 💐</p>
+  <p>I-scan ang QR code o i-click ang button sa ibaba upang mag-upload ng iyong larawan at mensahe.  
+  Ang iyong pagbati ay magiging espesyal na bahagi ng aming alaala.</p>
 
   <div class="guest-actions">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw%2Fviewform"
-         alt="QR Code para sa Wedding Form">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw/viewform" 
-       target="_blank">💌 I-click</a>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw%2Fviewform" alt="QR Code para sa Wedding Form">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw/viewform" target="_blank">💌 I-click</a>
   </div>
 
   <p style="margin-top:30px;font-style:italic;color:#7b5f8e;">
@@ -330,16 +276,28 @@
   </p>
 </section>
 
-<!-- 🎬 Video Script -->
+<!-- 🎬 Scroll + Sound Control -->
 <script>
-  // ✅ Adjust for mobile viewport height
+  // fade-in animation on scroll
+  const sections = document.querySelectorAll("section");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  sections.forEach(section => observer.observe(section));
+
+  // responsive height for mobile
   function setVH() {
     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
   }
   setVH();
   window.addEventListener('resize', setVH);
 
-  // ✅ Sound toggle control
+  // sound toggle
   const video = document.getElementById('weddingVideo');
   const btn = document.getElementById('soundToggle');
   let soundOn = true;
@@ -347,7 +305,6 @@
   video.volume = 1.0;
   video.muted = false;
 
-  // Autoplay attempt with sound, fallback to muted
   const playPromise = video.play();
   if (playPromise !== undefined) {
     playPromise.catch(() => {
@@ -368,6 +325,3 @@
 
 </body>
 </html>
-
-
-
