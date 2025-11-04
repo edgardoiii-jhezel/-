@@ -294,3 +294,40 @@
       }
     });
   }, { threshold: 0.1 });
+sections.forEach(section => observer.observe(section));
+
+  // responsive height for mobile
+  function setVH() {
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+  }
+  setVH();
+  window.addEventListener('resize', setVH);
+
+  // sound toggle
+  const video = document.getElementById('weddingVideo');
+  const btn = document.getElementById('soundToggle');
+  let soundOn = true;
+
+  video.volume = 1.0;
+  video.muted = false;
+
+  const playPromise = video.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      video.muted = true;
+      video.play();
+      btn.textContent = '🔇';
+      soundOn = false;
+    });
+  }
+
+  btn.addEventListener('click', () => {
+    soundOn = !soundOn;
+    video.muted = !soundOn;
+    btn.textContent = soundOn ? '🔊' : '🔇';
+    video.play();
+  });
+</script>
+
+</body>
+</html>
