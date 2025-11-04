@@ -25,6 +25,7 @@
     padding: 0;
     border: none;
     background: transparent;
+    line-height: 0;
   }
 
   section img {
@@ -36,7 +37,12 @@
     padding: 0;
     vertical-align: bottom;
     line-height: 0;
+    image-rendering: auto;
+    background-color: transparent;
   }
+
+  /* 🪶 Fix faint horizontal seams */
+  img { transform: translateY(-0.2px); }
 
   section {
     display: block;
@@ -135,10 +141,10 @@
     background-color: rgba(255,255,255,0.05);
   }
 
-  /* 💌 Guestbook Section */
+  /* 💌 Guestbook Section (updated background) */
   .guestbook {
     min-height: 100vh;
-    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/1e66b3abbd1a9f2ababb9d18feb08b52f7b494e5/Background.jpg')
+    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/2aa8e2a13d322261a311f8733f56a459a22d12b7/Background.jpg')
       center/cover no-repeat fixed;
     color: #3e2f3e;
     text-align: center;
@@ -288,48 +294,3 @@
       }
     });
   }, { threshold: 0.1 });
-  sections.forEach(section => observer.observe(section));
-
-  // responsive height for mobile
-  function setVH() {
-    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-  }
-  setVH();
-  window.addEventListener('resize', setVH);
-
-  // sound toggle
-  const video = document.getElementById('weddingVideo');
-  const btn = document.getElementById('soundToggle');
-  let soundOn = true;
-
-  video.volume = 1.0;
-  video.muted = false;
-
-  const playPromise = video.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(() => {
-      video.muted = true;
-      video.play();
-      btn.textContent = '🔇';
-      soundOn = false;
-    });
-  }
-
-  btn.addEventListener('click', () => {
-    soundOn = !soundOn;
-    video.muted = !soundOn;
-    btn.textContent = soundOn ? '🔊' : '🔇';
-    video.play();
-  });
-</script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
