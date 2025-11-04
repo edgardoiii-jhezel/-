@@ -19,7 +19,7 @@
     line-height: 0;
   }
 
-  /* 🌿 Perfect seamless vertical stacking */
+  /* 🌿 Perfect seamless vertical stacking for bamboo images */
   section {
     display: block;
     width: 100%;
@@ -32,9 +32,9 @@
 
   section img {
     display: block;
-    width: 101%;               /* slight overlap removes 1px black/white lines */
+    width: 101%;
     height: auto;
-    margin: -0.5px 0 0 -0.5%;  /* micro offset fix */
+    margin: -0.5px 0 0 -0.5%;
     padding: 0;
     border: none;
     background: #000;
@@ -43,7 +43,7 @@
     image-rendering: crisp-edges;
   }
 
-  /* 🎥 Video Section */
+  /* 🎥 Fullscreen Video Section */
   :root { --vh: 100%; }
 
   .video-section {
@@ -51,6 +51,8 @@
     width: 100%;
     height: calc(var(--vh, 1vh) * 100);
     overflow: hidden;
+    margin: 0;
+    padding: 0;
   }
 
   .video-section video {
@@ -64,7 +66,7 @@
     background-color: black;
   }
 
-  /* 🔊 Mute/Unmute Button */
+  /* 🔊 Sound Button */
   #soundToggle {
     position: absolute;
     bottom: 30px;
@@ -81,18 +83,25 @@
     backdrop-filter: blur(6px);
     transition: 0.3s ease;
   }
-  #soundToggle:hover { background: rgba(255, 255, 255, 0.45); }
+
+  #soundToggle:hover {
+    background: rgba(255, 255, 255, 0.45);
+  }
 
   @media (max-width: 768px) {
     #soundToggle {
-      width: 50px; height: 50px;
-      bottom: 20px; right: 20px;
+      width: 50px;
+      height: 50px;
+      bottom: 20px;
+      right: 20px;
       font-size: 22px;
     }
   }
 
-  /* ✅ Clickable bamboo page halves */
-  .clickable-section { position: relative; }
+  /* ✅ Clickable bamboo halves */
+  .clickable-section {
+    position: relative;
+  }
 
   .clickable-section a {
     position: absolute;
@@ -102,6 +111,7 @@
     display: block;
     z-index: 5;
   }
+
   .clickable-section a.left { left: 0; }
   .clickable-section a.right { left: 50%; }
 
@@ -109,7 +119,7 @@
   .guestbook {
     min-height: 100vh;
     background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/Background.jpg')
-      center/cover no-repeat fixed;
+      center/cover no-repeat;
     color: #3e2f3e;
     text-align: center;
     display: flex;
@@ -165,12 +175,12 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     transition: 0.3s;
   }
+
   .guest-actions a:hover { background: #a98fc0; }
 
   @media (max-width: 768px) {
     .guestbook {
       padding: 70px 25px 60px;
-      background-attachment: scroll;
     }
     .guestbook h1 { font-size: 2.3em; color: #7b5f8e; }
     .guestbook p { font-size: 1em; line-height: 1.7; }
@@ -196,7 +206,7 @@
   <button id="soundToggle">🔊</button>
 </section>
 
-<!-- 🌿 Bamboo Wedding Pages -->
+<!-- 🌿 Bamboo Pages -->
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/1.jpg" alt="Page 1"></section>
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/2.jpg" alt="Page 2"></section>
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/3.jpg" alt="Page 3"></section>
@@ -232,7 +242,7 @@
   </p>
 </section>
 
-<!-- 🎬 Sound Toggle -->
+<!-- 🎬 Sound Control -->
 <script>
   const video = document.getElementById('weddingVideo');
   const btn = document.getElementById('soundToggle');
@@ -243,6 +253,13 @@
     video.muted = !soundOn;
     btn.textContent = soundOn ? '🔊' : '🔇';
   });
+
+  // Fix viewport height on mobile browsers
+  function setVH() {
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+  }
+  setVH();
+  window.addEventListener('resize', setVH);
 </script>
 
 </body>
