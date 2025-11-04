@@ -19,41 +19,34 @@
     line-height: 0;
   }
 
-  /* 🌿 Remove any visible page break or bamboo seam lines */
-  html, body, section, img {
+  /* 🌿 FIX: Absolutely seamless image stacking */
+  section {
+    display: block;
+    width: 100%;
+    line-height: 0;
+    font-size: 0;
     margin: 0;
     padding: 0;
     border: none;
-    background: transparent;
-    line-height: 0;
+    background: #000;
   }
 
   section img {
     display: block;
     width: 100%;
     height: auto;
-    border: none;
     margin: 0;
     padding: 0;
-    vertical-align: bottom;
+    border: 0;
     line-height: 0;
-    image-rendering: auto;
-    background-color: transparent;
-    clip-path: inset(0.2px 0 0.2px 0); /* ✨ Removes faint bamboo edge lines */
+    vertical-align: bottom;
+    background: #000;
+    image-rendering: -webkit-optimize-contrast;
   }
 
-  /* 💫 Seamless bamboo enhancement */
-  img {
-    transform: translateY(-0.2px);
-    filter: brightness(102%) contrast(102%);
-  }
-
-  section {
-    display: block;
-    width: 100%;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1.2s ease, transform 1.2s ease;
+  /* 🪶 Tiny overlap to remove the visible join line */
+  section + section img {
+    margin-top: -1px;
   }
 
   section.visible {
@@ -288,30 +281,9 @@
 
 <!-- 🎬 Scroll + Sound Control -->
 <script>
-  const sections = document.querySelectorAll("section");
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  sections.forEach(section => observer.observe(section));
-
-  function setVH() {
-    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-  }
-  setVH();
-  window.addEventListener('resize', setVH);
-
   const video = document.getElementById('weddingVideo');
   const btn = document.getElementById('soundToggle');
   let soundOn = false;
-
-  video.muted = true;
-  video.volume = 1.0;
-  video.play();
 
   btn.addEventListener('click', () => {
     soundOn = !soundOn;
