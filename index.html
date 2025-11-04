@@ -19,66 +19,34 @@
     line-height: 0;
   }
 
-  /* 🌿 Remove any visible page break or bamboo seam lines */
-  html, body, section, img {
+  /* 🌿 FIX: Absolutely seamless image stacking */
+  section {
+    display: block;
+    width: 100%;
+    line-height: 0;
+    font-size: 0;
     margin: 0;
     padding: 0;
     border: none;
-    background: transparent;
-    line-height: 0;
+    background: #000;
   }
 
-  /* 🧩 FIX: Seamless bamboo + background edges */
   section img {
     display: block;
     width: 100%;
     height: auto;
     margin: 0;
     padding: 0;
-    border: none;
+    border: 0;
+    line-height: 0;
     vertical-align: bottom;
-    background-color: transparent;
+    background: #000;
     image-rendering: -webkit-optimize-contrast;
-    clip-path: inset(0.3px 0 0.3px 0); /* removes faint lines */
   }
 
-  /* 🩶 Force pixel-perfect joins */
-  body, html {
-    margin: 0;
-    padding: 0;
-    background-color: #000;
-    overflow-x: hidden;
-  }
-
-  /* ✨ Smooth gradient blend between sections */
-  section {
-    position: relative;
-    background-color: #000;
-    isolation: isolate;
-  }
-  section::before {
-    content: "";
-    position: absolute;
-    top: -1px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.4), transparent);
-    z-index: 2;
-  }
-
-  /* 💫 Optional (stronger blend for bamboo lines) */
-  img {
-    transform: translateY(-0.4px);
-    filter: contrast(103%) brightness(101%) blur(0.1px);
-  }
-
-  section {
-    display: block;
-    width: 100%;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1.2s ease, transform 1.2s ease;
+  /* 🪶 Tiny overlap to remove the visible join line */
+  section + section img {
+    margin-top: -1px;
   }
 
   section.visible {
@@ -313,30 +281,9 @@
 
 <!-- 🎬 Scroll + Sound Control -->
 <script>
-  const sections = document.querySelectorAll("section");
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  sections.forEach(section => observer.observe(section));
-
-  function setVH() {
-    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-  }
-  setVH();
-  window.addEventListener('resize', setVH);
-
   const video = document.getElementById('weddingVideo');
   const btn = document.getElementById('soundToggle');
   let soundOn = false;
-
-  video.muted = true;
-  video.volume = 1.0;
-  video.play();
 
   btn.addEventListener('click', () => {
     soundOn = !soundOn;
